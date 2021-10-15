@@ -1,3 +1,0 @@
-# jQueryPlayground
-# jQueryPlayground
-# jQueryPlayground

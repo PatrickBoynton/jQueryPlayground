@@ -1,0 +1,72 @@
+:root {
+  --dark-color: #04b448;
+  --light-color: #fff;
+  --bg-color: #036d8d;
+  --delete: #e93c3c;
+  --edit: #07a8da;
+}
+
+label {
+  font-size: 1.1rem;
+  color: var(--dark-color);
+  font-weight: bold;
+}
+
+.btn {
+  background-color: transparent;
+  color: var(--dark-color);
+  border: 3px solid var(--dark-color);
+  border-radius: 6px;
+}
+
+.card {
+  background-color: var(--bg-color);
+  border: 3px solid var(--dark-color);
+  color: var(--dark-color);
+  max-width: 12%;
+}
+
+.card-link {
+  color: var(--dark-color);
+}
+
+.edit-link {
+  color: var(--edit);
+}
+
+.edit-link:hover {
+  color: var(--edit);
+  filter: brightness(80%);
+}
+
+.delete-link {
+  color: var(--delete);
+}
+
+.delete-link:hover {
+  color: var(--delete);
+  filter: brightness(80%);
+}
+
+.btn:hover {
+  background-color: var(--dark-color);
+  color: var(--bg-color);
+  border: 3px solid var(--dark-color);
+}
+
+.btn:focus {
+  border: none;
+  background-color: var(--dark-color);
+}
+
+input {
+  border: 3px solid var(--dark-color);
+  border-radius: 6px;
+}
+
+form {
+  background-color: var(--bg-color);
+  border: 3px solid var(--dark-color);
+  width: 28.125rem;
+  border-radius: 6px;
+}
