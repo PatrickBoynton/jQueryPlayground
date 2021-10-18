@@ -3,10 +3,10 @@ const addCard = (todo) => {
   const div = $(".items");
 
   let todoCard =
-    '<div class="card card-body m-5"><h5 class="card-title" id="title">' +
+    '<div class="card card-body m-5"><h5 class="card-title">' +
     todo +
-    '</h5> <div class="d-flex"><a href="#" class="card-link edit-link fw-bold" id="edit">Edit</a>' +
-    '<a href="#" class="card-link fw-bold delete-link" id="delete">Delete</a></div> </div>';
+    '</h5> <div class="d-flex"><a href="#" class="card-link edit-link fw-bold">Edit</a>' +
+    '<a href="#" class="card-link fw-bold delete-link delete">Delete</a></div> </div>';
 
   div.append(todoCard);
 };
@@ -24,7 +24,7 @@ $("form").on("submit", (e) => {
 
   localStorage.setItem("todos", JSON.stringify(todos));
 
-  addCard(todo);
+  addCard(todos);
 });
 
 // Read
@@ -35,9 +35,17 @@ $(window).on("load", () => {
 });
 
 // Delete
-$(document).on("click", "#delete", (e) => {
-  const title = $("#title").text();
-  const todos = JSON.parse(localStorage.getItem("todos"));
+$(document).on("click", ".delete", function (e) {
+  const storage = JSON.parse(localStorage.getItem("todos"));
 
-  console.log(todos.indexOf(title));
+  const card = $(this).closest(".card");
+  const title = card.children("h5").text();
+
+  const index = storage.indexOf(title);
+
+  storage.splice(index, 1);
+
+  localStorage.setItem("todos", JSON.stringify(storage));
+
+  card.remove();
 });
