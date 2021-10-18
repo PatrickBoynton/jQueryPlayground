@@ -14,13 +14,15 @@ const addCard = (todo) => {
 
 // Create
 $("#add").on("click", () => {
-  let todos = [];
+  let todos = JSON.parse(localStorage.getItem("todos"));
 
-  let todo = { title: $("#add-todo").val() };
+  let todo = {id: Math.random() * 1000, title: $("#add-todo").val() };
+
+  if (todos === null) todos = [];
 
   todos.push(todo);
 
-  const storage = localStorage.setItem("todos", JSON.stringify(todos));
+  localStorage.setItem("todos", JSON.stringify(todos));
 
   addCard(storage);
 });
@@ -53,11 +55,13 @@ $(document).on("click", "#edit-todo", (e) => {
   const title = $("#title").text();
 
   if (inputTitle === title) {
-    const todo = localStorage.setItem("todos", JSON.stringify(inputTitle));
+    const todo = localStorage.setItem(
+      "todos",
+      JSON.stringify({ title: inputTitle })
+    );
 
     addCard(todo);
-
-    location.reload();
+    location.reload;
   }
 });
 
