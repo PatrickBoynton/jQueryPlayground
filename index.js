@@ -1,13 +1,12 @@
 // Helper method for creating the UI.
-const addCard = (todo) => {
+const addCard = (todo, id) => {
   const div = $(".items");
 
   let todoCard =
     '<div class="card card-body m-5"><h5 class="card-title">' +
     todo +
-    '</h5> <div class="d-flex"><a href="#" class="card-link edit-link fw-bold edit">Edit</a>' +
-    '<a href="#" class="card-link fw-bold delete-link delete">Delete</a></div> </div>';
-
+    `</h5> <div class="d-flex"><a href="#" class="card-link edit-link fw-bold edit" data-id="${id}">Edit</a>` +
+    `<a href="#" class="card-link fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
   div.append(todoCard);
 };
 
@@ -28,14 +27,14 @@ $("form").on("submit", (e) => {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 
-    addCard(todos);
+    addCard(todo);
   } else {
     if (todo !== "") {
       todos.push(todo);
 
       localStorage.setItem("todos", JSON.stringify(todos));
 
-      addCard(todos);
+      addCard(todo);
     }
   }
 });
@@ -44,7 +43,7 @@ $("form").on("submit", (e) => {
 $(window).on("load", () => {
   const storage = JSON.parse(localStorage.getItem("todos"));
 
-  storage?.map((t) => addCard(t));
+  storage?.map((todo, i) => addCard(todo, i));
 });
 
 // Set Edit Mode
@@ -74,4 +73,7 @@ $(document).on("click", ".delete", function (e) {
 // Clear all todos
 $("#clear").on("click", () => {
   localStorage.removeItem("todos");
+  const card = $(".card");
+
+  card.remove();
 });
