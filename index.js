@@ -64,3 +64,8 @@ $(document).on("click", ".delete", function (e) {
 
   card.remove();
 });
+
+// Clear all todos
+$("#clear").on("click", () => {
+  localStorage.removeItem("todos");
+});
