@@ -21,10 +21,15 @@ $("form").on("submit", (e) => {
 
   const isEditing = button.attr("id") === "edit";
 
-  if (isEditing) {
-  } else {
-    if (todos === null) todos = [];
+  if (todos === null) todos = [];
 
+  if (isEditing) {
+    todos[todos.indexOf(todo) + 1] = todo;
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    addCard(todos);
+  } else {
     if (todo !== "") {
       todos.push(todo);
 
@@ -44,7 +49,6 @@ $(window).on("load", () => {
 
 // Set Edit Mode
 $(document).on("click", ".edit", function (e) {
-  const storage = JSON.parse(localStorage.getItem("todos"));
   const card = $(this).closest(".card");
   const title = card.children("h5").text();
   $("#add-todo").val(title);
