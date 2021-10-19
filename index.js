@@ -12,18 +12,25 @@ const addCard = (todo) => {
 };
 
 // Create or edit depending on button id
-$("form").on("submit", () => {
+$("form").on("submit", (e) => {
+  e.preventDefault();
   let todos = JSON.parse(localStorage.getItem("todos"));
-
   let todo = $("#add-todo").val();
 
-  if (todos === null) todos = [];
+  const button = $("button");
 
-  todos.push(todo);
+  const isEditing = button.attr("id") === "edit";
 
-  localStorage.setItem("todos", JSON.stringify(todos));
+  if (isEditing) {
+  } else {
+    if (todos === null) todos = [];
 
-  addCard(todos);
+    todos.push(todo);
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    addCard(todos);
+  }
 });
 
 // Read
@@ -39,7 +46,7 @@ $(document).on("click", ".edit", function (e) {
   const card = $(this).closest(".card");
   const title = card.children("h5").text();
   $("#add-todo").val(title);
-  const button = $("#add").text("Edit Todo").attr("id", "edit");
+  $("#add").text("Edit Todo").attr("id", "edit");
 });
 
 // Delete
