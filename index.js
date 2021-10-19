@@ -25,11 +25,13 @@ $("form").on("submit", (e) => {
   } else {
     if (todos === null) todos = [];
 
-    todos.push(todo);
+    if (todo !== "") {
+      todos.push(todo);
 
-    localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("todos", JSON.stringify(todos));
 
-    addCard(todos);
+      addCard(todos);
+    }
   }
 });
 
