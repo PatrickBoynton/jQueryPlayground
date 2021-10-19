@@ -19,6 +19,16 @@ label {
   border-radius: 6px;
 }
 
+#clear {
+  border: 3px solid coral;
+  color: coral;
+}
+
+#clear:hover {
+  background-color: coral;
+  color: var(--bg-color);
+}
+
 .card {
   background-color: var(--bg-color);
   border: 3px solid var(--dark-color);
@@ -67,6 +77,6 @@ input {
 form {
   background-color: var(--bg-color);
   border: 3px solid var(--dark-color);
-  width: 28.125rem;
+  width: 38rem;
   border-radius: 6px;
 }
