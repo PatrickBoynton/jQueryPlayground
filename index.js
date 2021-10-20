@@ -35,6 +35,7 @@ $("form").on("submit", (e) => {
       localStorage.setItem("todos", JSON.stringify(todos));
 
       addCard(todo);
+      $("#add-todo").val("");
     }
   }
 });
@@ -76,4 +77,6 @@ $("#clear").on("click", () => {
   const card = $(".card");
 
   card.remove();
+
+  $("#add-todo").val("");
 });
