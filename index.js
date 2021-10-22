@@ -1,5 +1,5 @@
 let id;
-
+let isEditing;
 // Helper method for creating the UI.
 const addCard = (todo, id) => {
   const div = $(".items");
@@ -9,7 +9,12 @@ const addCard = (todo, id) => {
     todo +
     `</h5> <div class="d-flex"><a href="#" class="card-link edit-link fw-bold edit" data-id="${id}">Edit</a>` +
     `<a href="#" class="card-link fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
-  div.append(todoCard);
+
+  if (isEditing) {
+    div.replaceWith(`${todoCard}`);
+  } else {
+    div.append(todoCard);
+  }
 };
 
 // Create or edit depending on button id
@@ -20,7 +25,7 @@ $("form").on("submit", (e) => {
 
   const button = $("button");
 
-  const isEditing = button.attr("id") === "edit";
+  isEditing = button.attr("id") === "edit";
 
   if (todos === null) todos = [];
 
@@ -30,7 +35,10 @@ $("form").on("submit", (e) => {
     localStorage.setItem("todos", JSON.stringify(todos));
 
     addCard(todo);
-    $("add-todo").val("");
+
+    $("#add-todo").val("");
+    $("#edit").attr("id", "add");
+    $("#add").text("Add Todo").blur();
   } else {
     if (todo !== "") {
       todos.push(todo);
@@ -38,6 +46,7 @@ $("form").on("submit", (e) => {
       localStorage.setItem("todos", JSON.stringify(todos));
 
       addCard(todo);
+
       $("#add-todo").val("");
     }
   }
