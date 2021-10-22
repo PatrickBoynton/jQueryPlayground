@@ -1,3 +1,5 @@
+let id;
+
 // Helper method for creating the UI.
 const addCard = (todo, id) => {
   const div = $(".items");
@@ -23,11 +25,12 @@ $("form").on("submit", (e) => {
   if (todos === null) todos = [];
 
   if (isEditing) {
-    todos[todos.indexOf(todo) + 1] = todo;
+    todos[id] = todo;
 
     localStorage.setItem("todos", JSON.stringify(todos));
 
     addCard(todo);
+    $("add-todo").val("");
   } else {
     if (todo !== "") {
       todos.push(todo);
@@ -51,6 +54,7 @@ $(window).on("load", () => {
 $(document).on("click", ".edit", function (e) {
   const card = $(this).closest(".card");
   const title = card.children("h5").text();
+  id = $(this).attr("data-id");
   $("#add-todo").val(title);
   $("#add").text("Edit Todo").attr("id", "edit");
 });
