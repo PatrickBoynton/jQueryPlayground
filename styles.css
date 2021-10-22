@@ -19,6 +19,16 @@ label {
   border-radius: 6px;
 }
 
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--dark-color);
+  color: var(--bg-color);
+  /* This removes the blue outline on active and focus. */
+  outline: none;
+  box-shadow: none !important;
+  border: 3px solid var(--dark-color) !important;
+}
+
 #clear {
   border: 3px solid coral;
   color: coral;
@@ -27,6 +37,15 @@ label {
 #clear:hover {
   background-color: coral;
   color: var(--bg-color);
+}
+
+#clear:focus,
+#clear:active {
+  border: 3px solid coral;
+  background-color: coral;
+  color: var(--bg-color);
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 .card {
@@ -72,6 +91,12 @@ label {
 input {
   border: 3px solid var(--dark-color);
   border-radius: 6px;
+}
+
+input:focus,
+input:active {
+  outline: none !important;
+  background-color: var(--bg-color);
 }
 
 form {
