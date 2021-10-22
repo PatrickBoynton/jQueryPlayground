@@ -44,6 +44,7 @@ label {
   border: 3px solid coral;
   background-color: coral;
   color: var(--bg-color);
+  /* All important flags are to overwrite bootstrap styles. */
   box-shadow: none !important;
   outline: none !important;
 }
@@ -96,7 +97,6 @@ input {
 input:focus,
 input:active {
   outline: none !important;
-  background-color: var(--bg-color);
 }
 
 form {
