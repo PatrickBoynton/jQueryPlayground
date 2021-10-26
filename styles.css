@@ -4,52 +4,12 @@
   --bg-color: #036d8d;
   --delete: #e93c3c;
   --edit: #07a8da;
-}
-
-label {
-  font-size: 1.1rem;
-  color: var(--dark-color);
-  font-weight: bold;
-}
-
-.btn {
-  background-color: transparent;
-  color: var(--dark-color);
-  border: 3px solid var(--dark-color);
-  border-radius: 6px;
-}
-
-.btn-primary:active,
-.btn-primary:focus {
-  background-color: var(--dark-color);
-  color: var(--bg-color);
-  /* This removes the blue outline on active and focus. */
-  outline: none;
-  box-shadow: none !important;
-  border: 3px solid var(--dark-color) !important;
-}
-
-#clear {
-  border: 3px solid coral;
-  color: coral;
-}
-
-#clear:hover {
-  background-color: coral;
-  color: var(--bg-color);
-}
-
-#clear:focus,
-#clear:active {
-  border: 3px solid coral;
-  background-color: coral;
-  color: var(--bg-color);
-  /* All important flags are to overwrite bootstrap styles. */
-  box-shadow: none !important;
-  outline: none !important;
+  --clear: #ff7f50;
 }
 
 .card {
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 2rem;
   background-color: var(--bg-color);
   border: 3px solid var(--dark-color);
   color: var(--dark-color);
@@ -60,33 +20,59 @@ label {
   color: var(--dark-color);
 }
 
-.edit-link {
-  color: var(--edit);
-}
+/* Button Styles. */
 
-.edit-link:hover {
-  color: var(--edit);
-  filter: brightness(80%);
-}
-
-.delete-link {
-  color: var(--delete);
-}
-
-.delete-link:hover {
-  color: var(--delete);
-  filter: brightness(80%);
-}
-
-.btn:hover {
-  background-color: var(--dark-color);
-  color: var(--bg-color);
+.btn {
+  background-color: transparent;
+  color: var(--dark-color);
   border: 3px solid var(--dark-color);
 }
 
-.btn:focus {
-  border: none;
+.btn:hover,
+.btn:focus,
+.btn:active {
+  box-shadow: none !important;
+  border: 3px solid var(--dark-color);
+  color: var(--bg-color);
+}
+
+#clear {
+  border: 3px solid var(--clear);
+  color: var(--clear);
+}
+
+#clear:hover {
+  background-color: var(--clear);
+  color: var(--bg-color);
+}
+
+#add:hover {
   background-color: var(--dark-color);
+}
+
+.edit {
+  border: 3px solid var(--edit);
+  color: var(--edit);
+}
+
+.edit:hover {
+  background-color: var(--edit);
+  border: 3px solid var(--edit);
+}
+
+.delete {
+  border: 3px solid var(--delete);
+  color: var(--delete);
+}
+.delete:hover {
+  border: 3px solid var(--delete);
+  color: var(--bg-color);
+  background-color: var(--delete);
+}
+label {
+  font-size: 1.1rem;
+  color: var(--dark-color);
+  font-weight: bold;
 }
 
 input {
@@ -104,4 +90,5 @@ form {
   border: 3px solid var(--dark-color);
   width: 38rem;
   border-radius: 6px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
 }
