@@ -42,12 +42,16 @@
   color: var(--clear);
 }
 
-#clear:hover {
+#clear:hover,
+#clear:focus,
+#clear:active {
   background-color: var(--clear);
   color: var(--bg-color);
 }
 
-#add:hover {
+#add:hover,
+#add:active,
+#add:focus {
   background-color: var(--dark-color);
 }
 
@@ -57,16 +61,27 @@
   margin-right: 1.8rem;
 }
 
-.edit:hover {
+.edit:hover,
+.edit:active,
+.edit:focus {
   background-color: var(--edit);
   border: 3px solid var(--edit);
+}
+
+#edit:hover,
+#edit:active,
+#edit:focus {
+  background-color: var(--dark-color);
 }
 
 .delete {
   border: 3px solid var(--delete);
   color: var(--delete);
 }
-.delete:hover {
+
+.delete:hover,
+.delete:focus,
+.delete:active {
   border: 3px solid var(--delete);
   color: var(--bg-color);
   background-color: var(--delete);
@@ -90,7 +105,7 @@ input:active {
 form {
   background-color: var(--bg-color);
   border: 3px solid var(--dark-color);
-  width: 38rem;
+  width: 36rem;
   border-radius: 6px;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
 }
