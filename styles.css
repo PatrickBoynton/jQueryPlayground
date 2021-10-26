@@ -9,11 +9,13 @@
 
 .card {
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  padding: 1rem;
+  width: 200px;
   background-color: var(--bg-color);
   border: 3px solid var(--dark-color);
   color: var(--dark-color);
-  max-width: 12%;
+  max-width: 18%;
+  height: 10rem;
 }
 
 .card-link {
@@ -21,7 +23,6 @@
 }
 
 /* Button Styles. */
-
 .btn {
   background-color: transparent;
   color: var(--dark-color);
@@ -53,6 +54,7 @@
 .edit {
   border: 3px solid var(--edit);
   color: var(--edit);
+  margin-right: 1.8rem;
 }
 
 .edit:hover {
@@ -91,4 +93,12 @@ form {
   width: 38rem;
   border-radius: 6px;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.d-flex {
+  margin-top: 3rem;
+}
+
+h5 {
+  text-align: center;
 }
