@@ -7,8 +7,8 @@ const addCard = (todo, id) => {
   let todoCard =
     '<div class="card card-body m-5"><h5 class="card-title">' +
     todo +
-    `</h5> <div class="d-flex"><a href="#" class="card-link edit-link fw-bold edit" data-id="${id}">Edit</a>` +
-    `<a href="#" class="card-link fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
+    `</h5> <div class="d-flex"><a href="#" class="btn btn-secondary edit-link fw-bold edit" data-id="${id}">Edit</a>` +
+    `<a href="#" class="btn btn-danger fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
 
   if (isEditing) {
     div.replaceWith(`${todoCard}`);
@@ -48,6 +48,7 @@ $("form").on("submit", (e) => {
       addCard(todo);
 
       $("#add-todo").val("");
+      $("#add").text("Add Todo").blur();
     }
   }
 });
@@ -92,4 +93,5 @@ $("#clear").on("click", () => {
   card.remove();
 
   $("#add-todo").val("");
+  $("#clear").blur();
 });
