@@ -83,7 +83,7 @@
 
 .delete {
   border: var(--delete-border);
-  color: var(--delete-border);
+  color: var(--delete);
 }
 
 .delete:hover,
