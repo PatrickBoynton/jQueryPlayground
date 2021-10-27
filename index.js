@@ -11,7 +11,8 @@ const addCard = (todo, id) => {
     `<a href="#" class="btn btn-danger fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
 
   if (isEditing) {
-    div.replaceWith(`${todoCard}`);
+    div.append(`${todoCard}`);
+    location.reload();
   } else {
     div.append(todoCard);
   }
@@ -34,7 +35,7 @@ $("form").on("submit", (e) => {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 
-    addCard(todo);
+    // addCard(todo);
 
     $("#add-todo").val("");
     $("#edit").attr("id", "add");
