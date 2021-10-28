@@ -11,8 +11,9 @@ const addCard = (todo, id) => {
     `<a href="#" class="btn btn-danger fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
 
   if (isEditing) {
-    div.append(`${todoCard}`);
-    location.reload();
+    // Another attempt to update the todo.
+    // it updates the item, but the dom does not update without a reload.
+    $(".card").append(todo).live();
   } else {
     div.append(todoCard);
   }
@@ -35,7 +36,7 @@ $("form").on("submit", (e) => {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 
-    // addCard(todo);
+    addCard(todo);
 
     $("#add-todo").val("");
     $("#edit").attr("id", "add");

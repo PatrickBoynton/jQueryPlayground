@@ -6,6 +6,7 @@
   --edit: #07a8da;
   --clear: #ff7f50;
   --box: #00000085;
+  /* Playing around with variables more than being practical. */
   --border: 3px solid;
   --shadow: 5px 5px 10px 0 var(--box);
   --dark-border: var(--border) var(--dark-color);
