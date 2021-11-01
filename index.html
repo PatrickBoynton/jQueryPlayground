@@ -18,7 +18,7 @@
 
     <div class="form-inline">
       <div class="form-group">
-        <form action="" method="POST" class="p-2 m-auto">
+        <form action="" id="add-form" method="POST" class="p-2 m-auto">
           <label for="add-todo">Todo Title</label>
           <input type="text" name="title" id="add-todo" class="m-3" />
           <button type="submit" class="btn btn-primary m-2" id="add">
@@ -32,6 +32,7 @@
     </div>
     <!-- Where the todo cards are displayed. -->
     <div class="d-flex flex-wrap items"></div>
+    <!-- For reference later if I need it. -->
     <!-- <div class="card card-body m-5">
       <h5 class="card-title">${todo}</h5>
       <div class="d-flex">
