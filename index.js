@@ -1,5 +1,30 @@
 let id;
 let isEditing;
+
+// Create or edit depending on button id
+$("form").on("submit", (e) => {
+  e.preventDefault();
+  
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  const todo = $("#add-todo").val();
+
+  checkStatus(id, todo, todos);
+});
+
+checkStatus = (id, todo, todos) => {
+  isEditing = $("button").attr("id") === "edit";
+
+  if (todos === null) todos = [];
+
+  if (isEditing) {
+    editTodo(id, todo, todos);
+  } else {
+    if (todo !== "") {
+      addTodo(todo, todos);
+    }
+  }
+};
+
 // Helper method for creating the UI.
 const addCard = (todo, id) => {
   const div = $(".items");
@@ -10,50 +35,31 @@ const addCard = (todo, id) => {
     `</h5> <div class="d-flex"><a href="#" class="btn btn-secondary edit-link fw-bold edit" data-id="${id}">Edit</a>` +
     `<a href="#" class="btn btn-danger fw-bold delete-link delete" data-id="${id}">Delete</a></div> </div>`;
 
-  if (isEditing) {
-    // Another attempt to update the todo.
-    // it updates the item, but the dom does not update without a reload.
-    $(".card").append(todo).live();
-  } else {
-    div.append(todoCard);
-  }
+  div.append(todoCard);
 };
 
-// Create or edit depending on button id
-$("form").on("submit", (e) => {
-  e.preventDefault();
-  let todos = JSON.parse(localStorage.getItem("todos"));
-  let todo = $("#add-todo").val();
+addTodo = (todo, todos) => {
+  todos.push(todo);
 
-  const button = $("button");
+  localStorage.setItem("todos", JSON.stringify(todos));
 
-  isEditing = button.attr("id") === "edit";
+  addCard(todo);
 
-  if (todos === null) todos = [];
+  $("#add-todo").val("");
+  $("#add").text("Add Todo").blur();
+};
 
-  if (isEditing) {
-    todos[id] = todo;
+editTodo = (id, todo, todos) => {
+  todos[id] = todo;
+  localStorage.setItem("todos", JSON.stringify(todos));
 
-    localStorage.setItem("todos", JSON.stringify(todos));
-
-    addCard(todo);
-
-    $("#add-todo").val("");
-    $("#edit").attr("id", "add");
-    $("#add").text("Add Todo").blur();
-  } else {
-    if (todo !== "") {
-      todos.push(todo);
-
-      localStorage.setItem("todos", JSON.stringify(todos));
-
-      addCard(todo);
-
-      $("#add-todo").val("");
-      $("#add").text("Add Todo").blur();
-    }
-  }
-});
+  // Changes the edit back to add, clears the input.
+  $("#add-todo").val("");
+  $("#edit").attr("id", "add");
+  $("#add").text("Add Todo").blur();
+  $(`[data-id=${id}]`).closest(".card").find(".card-title").text(todo);
+  $("#edit-form").attr("id", "add-form");
+};
 
 // Read
 $(window).on("load", () => {
@@ -63,12 +69,19 @@ $(window).on("load", () => {
 });
 
 // Set Edit Mode
-$(document).on("click", ".edit", function (e) {
+// Anonymous arrow functions don't work,
+// needs to be a regular function
+$(document).on("click", ".edit", function () {
   const card = $(this).closest(".card");
+
   const title = card.children("h5").text();
-  id = $(this).attr("data-id");
+
+  id = $(".edit").attr("data-id");
+
   $("#add-todo").val(title);
   $("#add").text("Edit Todo").attr("id", "edit");
+
+  $("#add-form").attr("id", "edit-form");
 });
 
 // Delete
